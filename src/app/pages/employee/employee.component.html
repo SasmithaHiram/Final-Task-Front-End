@@ -1,6 +1,6 @@
 <div id="text-add-customer">
-  <label for="first_name" class="block mb-2 text-2xl font-bold dark:text-white">
-    {{ isEditMode ? "Update Customer" : "Add Customer" }}</label
+  <label class="block mb-2 text-2xl font-bold dark:text-white">
+    {{ isEditMode ? "Update Employee" : "Add Employee" }}</label
   >
 </div>
 
@@ -13,8 +13,7 @@
       >
       <input
         type="text"
-        id="customer-name"
-        name="customerName"
+        name="name"
         [(ngModel)]="employee.name"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         placeholder="Enter Name"
@@ -23,14 +22,12 @@
     </div>
     <div>
       <label
-        for="email"
+        name="email"
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
         >Email</label
       >
       <input
         type="email"
-        id="email"
-        name="customerEmail"
         [(ngModel)]="employee.email"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         placeholder="Enter Email"
@@ -39,18 +36,25 @@
     </div>
 
     <div>
-      <label
-        for="email"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >Email</label
+      <label class="blok mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Category</label
       >
-      <input
-        type="text"
+      <select
+        id="select"
         [(ngModel)]="employee.department"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="Enter Department"
-        required
-      />
+        name="department"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      >
+        <option value="" disabled>SELECT A DEPARTMENT</option>
+        <option>HR</option>
+        <option>IT</option>
+        <option>FINANCE</option>
+        <option>SALES</option>
+        <option>MARKETING</option>
+        <option>OPERATIONS</option>
+        <option>LEGAL</option>
+        <option>ADMINISTRATION</option>
+      </select>
     </div>
   </div>
 

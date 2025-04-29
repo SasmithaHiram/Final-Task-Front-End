@@ -4,10 +4,10 @@ export class Employee {
   department: string;
   email: string;
 
-  constructor(name: string, department: string, email: string, id?: number) {
+  constructor(name: string, email: string, department: string, id?: number) {
     this.id = id;
     this.name = name;
-    this.department = department;
     this.email = email;
+    this.department = department;
   }
 }
