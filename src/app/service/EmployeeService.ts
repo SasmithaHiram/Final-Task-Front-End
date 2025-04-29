@@ -11,8 +11,7 @@ export class EmployeeService {
 
   addNewEmployee(employee: Omit<Employee, 'id'>): Observable<Employee> {
     return this.http.post<Employee>(
-      'http://localhost:8080/employee/create',
-      employee
+      'http://localhost:8080/employee/create',employee
     );
   }
 

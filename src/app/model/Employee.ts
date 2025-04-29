@@ -8,6 +8,6 @@ export class Employee {
     this.id = id;
     this.name = name;
     this.email = email;
-    this.department = department;
+    this.department =department;
   }
 }

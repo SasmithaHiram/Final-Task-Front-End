@@ -15,7 +15,7 @@ export class EmployeeComponent implements OnInit {
   ngOnInit(): void {
     this.loadEmployeesTable();
   }
-  employee: Employee = new Employee('', '', '', 0);
+  employee: Employee = new Employee('', '', '');
 
   constructor(
     private http: HttpClient,
@@ -23,26 +23,26 @@ export class EmployeeComponent implements OnInit {
   ) {}
 
   addEmployee() {
- console.log(this.employee);
- if(this.employee.name && this.employee.email && this.employee.department) {
-  this.employeeService.addNewEmployee(this.employee).subscribe(() => {
-    this.resetForm();
-    this.loadEmployeesTable();
-  });
- } else {
-  alert("Try Again")
- }  
+    console.log(this.employee);
+    if (this.employee.name && this.employee.email && this.employee.department) {
+      this.employeeService.addNewEmployee(this.employee).subscribe(() => {
+        this.resetForm();
+        this.loadEmployeesTable();
+      });
+    } else {
+      alert('Try Again');
+    }
   }
 
   private resetForm() {
-    this.employee = new Employee('', '', '',0);
+    this.employee = new Employee('', '', '', 0);
     this.isEditMode = false;
     this.selectedEmployeeId = null;
   }
 
   isEditMode: boolean = false;
   selectedEmployeeId: number | null = null;
-  
+
   editEmployee(employee: Employee) {
     this.isEditMode = true;
     this.selectedEmployeeId = employee.id as number;
@@ -54,14 +54,14 @@ export class EmployeeComponent implements OnInit {
   }
 
   deleteEmployee(id?: number) {
-  if (!id) return;
+    if (!id) return;
 
-  if (confirm('ARE YOU SURE YOU WANT TO DELETE THIS CUSTOMER?')) {
-    this.employeeService.deleteEmployee(id.toString()).subscribe(() => {
-      this.loadEmployeesTable();
-    });
+    if (confirm('ARE YOU SURE YOU WANT TO DELETE THIS CUSTOMER?')) {
+      this.employeeService.deleteEmployee(id.toString()).subscribe(() => {
+        this.loadEmployeesTable();
+      });
+    }
   }
-}
 
   employeeList: Employee[] = [];
 
