@@ -1,8 +1,8 @@
 export class Employee {
   id?: number;
   name: string;
-  department: string;
   email: string;
+  department: string;
 
   constructor(name: string, email: string, department: string, id?: number) {
     this.id = id;
