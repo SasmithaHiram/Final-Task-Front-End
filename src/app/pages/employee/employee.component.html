@@ -1,0 +1,121 @@
+<div id="text-add-customer">
+  <label for="first_name" class="block mb-2 text-2xl font-bold dark:text-white">
+    {{ isEditMode ? "Update Customer" : "Add Customer" }}</label
+  >
+</div>
+
+<form (ngSubmit)="addEmployee()">
+  <div class="grid gap-6 mb-6 md:grid-cols-2">
+    <div>
+      <label
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Name</label
+      >
+      <input
+        type="text"
+        id="customer-name"
+        name="customerName"
+        [(ngModel)]="employee.name"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Enter Name"
+        required
+      />
+    </div>
+    <div>
+      <label
+        for="email"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Email</label
+      >
+      <input
+        type="email"
+        id="email"
+        name="customerEmail"
+        [(ngModel)]="employee.email"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Enter Email"
+        required
+      />
+    </div>
+
+    <div>
+      <label
+        for="email"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Email</label
+      >
+      <input
+        type="text"
+        [(ngModel)]="employee.department"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Enter Department"
+        required
+      />
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-2"
+  >
+    {{ isEditMode ? "Update Customer" : "AddCustomer" }}
+  </button>
+
+  <button
+    *ngIf="isEditMode"
+    type="button"
+    (click)="cancelEdit()"
+    class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+  >
+    Cancel
+  </button>
+</form>
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-6">
+  <table
+    class="w-full text-sm text-left rtl:text-right text-blue-100 dark:text-blue-100"
+  >
+    <thead
+      class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white"
+    >
+      <tr>
+        <th scope="col" class="px-6 py-3">Id</th>
+        <th scope="col" class="px-6 py-3">Name</th>
+        <th scope="col" class="px-6 py-3">Email</th>
+        <th scope="col" class="px-6 py-3">Department</th>
+        <th scope="col" class="px-6 py-3">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let employee of employeeList"
+        class="bg-blue-600 border-b border-blue-400 hover:bg-blue-500"
+      >
+        <th
+          scope="row"
+          class="px-6 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100"
+        >
+          {{ employee.id }}
+        </th>
+        <td class="px-6 py-4">{{ employee.name }}</td>
+        <td class="px-6 py-4">{{ employee.email }}</td>
+        <td class="px-6 py-4">{{ employee.department }}</td>
+        <td class="px-6 py-4">
+          <button
+            (click)="editEmployee(employee)"
+            class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded w-19 mr-2"
+          >
+            Edit
+          </button>
+          <button
+            (click)="deleteEmployee(employee.id)"
+            [disabled]="!employee.id"
+            class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded w-19"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
