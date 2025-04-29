@@ -1,5 +1,5 @@
 <div id="text-add-customer">
-  <label class="block mb-2 text-2xl font-bold dark:text-white">
+  <label for="first_name" class="block mb-2 text-2xl font-bold dark:text-white">
     {{ isEditMode ? "Update Employee" : "Add Employee" }}</label
   >
 </div>
@@ -113,7 +113,7 @@
             Edit
           </button>
           <button
-            (click)="deleteEmployee(employee.id)"
+            (click)="deleteCustomer(employee.id)"
             [disabled]="!employee.id"
             class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded w-19"
           >

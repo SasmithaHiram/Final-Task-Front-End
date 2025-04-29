@@ -23,19 +23,21 @@ export class EmployeeComponent implements OnInit {
   ) {}
 
   addEmployee() {
-    console.log(this.employee);
     if (this.employee.name && this.employee.email && this.employee.department) {
       this.employeeService.addNewEmployee(this.employee).subscribe(() => {
         this.resetForm();
         this.loadEmployeesTable();
       });
     } else {
-      alert('Try Again');
+      alert('PLEASE FILL OUT ALL REQUIRED FIELDS');
+      this.resetForm();
     }
+    this.resetForm();
+    this.loadEmployeesTable();
   }
 
   private resetForm() {
-    this.employee = new Employee('', '', '', 0);
+    this.employee = new Employee('', '', '');
     this.isEditMode = false;
     this.selectedEmployeeId = null;
   }
@@ -47,18 +49,19 @@ export class EmployeeComponent implements OnInit {
     this.isEditMode = true;
     this.selectedEmployeeId = employee.id as number;
     this.employee = { ...employee };
+    this.loadEmployeesTable();
   }
 
   cancelEdit() {
     this.resetForm();
   }
 
-  deleteEmployee(id?: number) {
+  deleteCustomer(id?: number) {
     if (!id) return;
 
     if (confirm('ARE YOU SURE YOU WANT TO DELETE THIS CUSTOMER?')) {
       this.employeeService.deleteEmployee(id.toString()).subscribe(() => {
-        this.loadEmployeesTable();
+        this.loadEmployeesTable()
       });
     }
   }
